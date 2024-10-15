@@ -1,7 +1,7 @@
 _base_ = [
     'co_deformable_detr_r50_1x_coco.py'
 ]
-pretrained = 'models/swin_large_patch4_window12_384_22k.pth'
+pretrained = '/home/aditya/codetr/Co-DETR/mmdet/models/co_deformable_detr_swin_large_900q_3x_coco.pth'
 # model settings
 model = dict(
     backbone=dict(

@@ -1,0 +1,3 @@
+[submodule "src/mmtrack"]
+	path = src/mmtrack
+	url = https://github.com/open-mmlab/mmtracking

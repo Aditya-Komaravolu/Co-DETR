@@ -30,6 +30,9 @@ RUN conda clean --all
 RUN pip install openmim
 RUN pip install timm
 RUN mim install mmdet==2.25.3
+RUN pip install yapf==0.40.1
+RUN pip install fairscale
+RUN pip install future tensorboard
 
 WORKDIR /Co-DETR
 

@@ -46,7 +46,7 @@ model = dict(
     query_head=dict(
         type='CoDeformDETRHead',
         num_query=300,
-        num_classes=80,
+        num_classes=7,
         in_channels=2048,
         sync_cls_avg_factor=True,
         with_box_refine=True,
@@ -113,7 +113,7 @@ model = dict(
             in_channels=256,
             fc_out_channels=1024,
             roi_feat_size=7,
-            num_classes=80,
+            num_classes=7,
             bbox_coder=dict(
                 type='DeltaXYWHBBoxCoder',
                 target_means=[0., 0., 0., 0.],
@@ -125,7 +125,7 @@ model = dict(
             loss_bbox=dict(type='GIoULoss', loss_weight=10.0*num_dec_layer*lambda_2)))],
     bbox_head=[dict(
         type='CoATSSHead',
-        num_classes=80,
+        num_classes=7,
         in_channels=256,
         stacked_convs=1,
         feat_channels=256,
@@ -236,10 +236,10 @@ train_pipeline = [
             [
                 dict(
                     type='Resize',
-                    img_scale=[(480, 1333), (512, 1333), (544, 1333),
-                               (576, 1333), (608, 1333), (640, 1333),
-                               (672, 1333), (704, 1333), (736, 1333),
-                               (768, 1333), (800, 1333)],
+                    img_scale=[(480, 1024), (512, 1024), (544, 1024),
+                               (576, 1024), (608, 1024), (640, 1024),
+                               (672, 1024), (704, 1024), (736, 1024),
+                               (768, 1024), (800, 1024)],
                     multiscale_mode='value',
                     keep_ratio=True)
             ],
@@ -258,10 +258,10 @@ train_pipeline = [
                     allow_negative_crop=True),
                 dict(
                     type='Resize',
-                    img_scale=[(480, 1333), (512, 1333), (544, 1333),
-                               (576, 1333), (608, 1333), (640, 1333),
-                               (672, 1333), (704, 1333), (736, 1333),
-                               (768, 1333), (800, 1333)],
+                    img_scale=[(480, 1024), (512, 1024), (544, 1024),
+                               (576, 1024), (608, 1024), (640, 1024),
+                               (672, 1024), (704, 1024), (736, 1024),
+                               (768, 1024), (800, 1024)],
                     multiscale_mode='value',
                     override=True,
                     keep_ratio=True)
@@ -279,7 +279,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='MultiScaleFlipAug',
-        img_scale=(1333, 800),
+        img_scale=(1024, 800),
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),
